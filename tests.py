@@ -24,12 +24,12 @@ class TestBooksCollector:
 
     # напиши свои тесты ниже
     # чтобы тесты были независимыми в каждом из них создавай отдельный экземпляр класса BooksCollector()
-    # nen bpvtytybza
+
     def test_set_book_genre_set_genre(self):
         collector1 = BooksCollector()
         collector1.add_new_book('Гордость и предубеждение и зомби')
         collector1.set_book_genre('Гордость и предубеждение и зомби','Ужасы')
-        assert collector1.books_genre['Гордость и предубеждение и зомби'] == 'Ужасы'
+        assert collector1.get_book_genre('Гордость и предубеждение и зомби') == 'Ужасы'
 
     @pytest.mark.parametrize('book_name, book_genre', [['Гордость и предубеждение и зомби', 'Ужасы'], ['Что делать, если ваш кот хочет вас убить', 'Ужасы']])
     def test_get_book_genre_get_genre(self, book_name, book_genre):
@@ -41,7 +41,6 @@ class TestBooksCollector:
         collector3 = BooksCollector()
         collector3.add_new_book('Что делать, если ваш кот хочет вас убить')
         collector3.set_book_genre('Что делать, если ваш кот хочет вас убить', 'Ужасы')
-        collector3.get_books_with_specific_genre('Ужасы')
         assert 'Что делать, если ваш кот хочет вас убить' in collector3.books_with_specific_genre
 
 
@@ -49,7 +48,7 @@ class TestBooksCollector:
         collector3 = BooksCollector()
         collector3.add_new_book('Гордость и предубеждение и зомби')
         collector3.add_new_book('Что делать, если ваш кот хочет вас убить')
-        collector3.get_books_genre()
+        collector3.get_book_genre()
         assert 'Гордость и предубеждение и зомби' and 'Что делать, если ваш кот хочет вас убить' in collector3.books_genre
 
 
